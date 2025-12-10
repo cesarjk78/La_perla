@@ -26,7 +26,7 @@ class BottomNav extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.map),
-          label: 'Rutas',
+          label: 'Juego',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.warning),

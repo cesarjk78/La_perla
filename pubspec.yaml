@@ -37,6 +37,9 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  geolocator: ^14.0.2
 
 dev_dependencies:
   flutter_test:
@@ -63,12 +66,14 @@ flutter:
     - assets/gif/mega_bus.gif
     - assets/gif/edificios.gif
     - assets/gif/estethebus.gif
+    - assets/gif/tercero.gif
     - assets/image/logo.png
     - assets/image/ruta_mapa.png
     - assets/image/bus_xd1.png  
     - assets/image/bustudy.png 
     - assets/image/busfoco.png 
-    - assets/image/bus_roblox.png 
+    - assets/image/bus_roblox.png
+    - assets/image/think.png 
 
   # To add assets to your application, add an assets section, like this:
   # assets:

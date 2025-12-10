@@ -900,7 +900,7 @@ class _BusProgressLineState extends State<BusProgressLine>
 
           // ---------- Texto de tiempo de viaje ----------
           Text(
-            "Total travel time: x min",
+            "Siempre llegando a tu destino",
             style: TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.w500,

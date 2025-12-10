@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/app_colors.dart';
 
 class EmergencyScreen extends StatelessWidget {
   const EmergencyScreen({super.key});
+
+  // Función para realizar llamada
+  void _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    } else {
+      debugPrint('No se pudo realizar la llamada a $phoneNumber');
+    }
+  }
 
   Widget _buildEmergencyAction({
     required IconData icon,
@@ -29,7 +43,6 @@ class EmergencyScreen extends StatelessWidget {
   Widget _buildEmergencyNumber({
     required String title,
     required String number,
-    required VoidCallback onCall,
   }) {
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 6),
@@ -39,11 +52,13 @@ class EmergencyScreen extends StatelessWidget {
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Disponible",
-                style: TextStyle(color: Colors.green, fontSize: 13)),
+            const Text(
+              "Disponible",
+              style: TextStyle(color: Colors.green, fontSize: 13),
+            ),
             const SizedBox(width: 8),
             ElevatedButton.icon(
-              onPressed: onCall,
+              onPressed: () => _makePhoneCall(number),
               icon: const Icon(Icons.phone, size: 18),
               label: const Text("Llamar"),
               style: ElevatedButton.styleFrom(
@@ -115,13 +130,13 @@ class EmergencyScreen extends StatelessWidget {
                         const SizedBox(height: 16),
                         _buildEmergencyAction(
                           icon: Icons.description,
-                          text: "Presentar Reporte de Incidente    ",
+                          text: "-  Presentar Reporte de Incidente    ",
                           onTap: () {},
                         ),
                         const SizedBox(height: 12),
                         _buildEmergencyAction(
                           icon: Icons.dangerous,
-                          text: "Informar Desastre Natural             ",
+                          text: "-  Informar Desastre Natural             ",
                           onTap: () {},
                         ),
                       ],
@@ -147,22 +162,18 @@ class EmergencyScreen extends StatelessWidget {
                   _buildEmergencyNumber(
                     title: "Emergencias Policiales",
                     number: "105",
-                    onCall: () {},
                   ),
                   _buildEmergencyNumber(
                     title: "Bomberos",
                     number: "116",
-                    onCall: () {},
                   ),
                   _buildEmergencyNumber(
                     title: "SAMU (Emergencias Médicas)",
                     number: "106",
-                    onCall: () {},
                   ),
                   _buildEmergencyNumber(
                     title: "Central La Perla del Altomayo",
                     number: "(01) 234-5678",
-                    onCall: () {},
                   ),
 
                   const SizedBox(height: 24),
